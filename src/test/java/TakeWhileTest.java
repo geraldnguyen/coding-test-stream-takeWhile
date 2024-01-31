@@ -29,9 +29,45 @@ class TakeWhileTest {
             list = Arrays.stream(integersCsv.split(",\\s*")).map(Integer::parseInt).collect(Collectors.toList());
         }
 
+
         assertEquals(
                 list.stream().takeWhile(i -> i > 0).collect(Collectors.toList()),
-                (new TakeWhile()).takeWhilePositive(list)
+                (new TakeWhile()).takeWhilePositive_loopImplicitStateManagement(list)
+        );
+
+        assertEquals(
+                list.stream().takeWhile(i -> i > 0).collect(Collectors.toList()),
+                (new TakeWhile()).takeWhilePositive_loopExplicitStateManagement(list)
+        );
+
+        assertEquals(
+                list.stream().takeWhile(i -> i > 0).collect(Collectors.toList()),
+                (new TakeWhile()).takeWhilePositive_streamForEach(list)
+        );
+
+        assertEquals(
+                list.stream().takeWhile(i -> i > 0).collect(Collectors.toList()),
+                (new TakeWhile()).takeWhilePositive_streamFilter(list)
+        );
+
+        assertEquals(
+                list.stream().takeWhile(i -> i > 0).collect(Collectors.toList()),
+                (new TakeWhile()).takeWhilePositive_streamMapFilter(list)
+        );
+
+        assertEquals(
+                list.stream().takeWhile(i -> i > 0).collect(Collectors.toList()),
+                (new TakeWhile()).takeWhilePositive_loopSublist(list)
+        );
+
+        assertEquals(
+                list.stream().takeWhile(i -> i > 0).collect(Collectors.toList()),
+                (new TakeWhile()).takeWhilePositive_streamSubList(list)
+        );
+
+        assertEquals(
+                list.stream().takeWhile(i -> i > 0).collect(Collectors.toList()),
+                (new TakeWhile()).takeWhilePositive_streamLimit(list)
         );
     }
 }
